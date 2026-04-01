@@ -14,3 +14,4 @@
 - Next.js 16, Tailwind CSS v4
 - Deployed on Vercel
 - Domain: whr-law.com (pending)
+
