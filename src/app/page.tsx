@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
@@ -7,13 +8,16 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-forest/95 backdrop-blur-sm border-b border-cream/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            <div className="flex items-center gap-2">
-              <span className="text-cream font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-bold tracking-tight">
-                WHR Law
-              </span>
-              <span className="hidden sm:inline text-cream/60 text-sm font-[family-name:var(--font-body)]">
-                | William H. Russell
-              </span>
+            <div className="flex items-center gap-3">
+              <Image src="/images/whr-monogram.jpg" alt="WHR Law" width={36} height={36} className="rounded invert brightness-200" />
+              <div className="flex items-center gap-2">
+                <span className="text-cream font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-bold tracking-tight">
+                  WHR Law
+                </span>
+                <span className="hidden sm:inline text-cream/60 text-sm font-[family-name:var(--font-body)]">
+                  | William H. Russell
+                </span>
+              </div>
             </div>
             <div className="flex items-center gap-3 sm:gap-6">
               <a
@@ -41,18 +45,18 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] sm:min-h-screen flex items-center bg-forest overflow-hidden">
-        {/* Background pattern overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-dark via-forest to-forest-light z-10" />
-        <div className="absolute inset-0 z-10 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 20% 50%, rgba(245,240,232,0.3) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }}
+        {/* Hero background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/william-russell-hero.jpg"
+            alt="William H. Russell, Austin Attorney"
+            fill
+            className="object-cover object-top opacity-30 sm:opacity-40"
+            priority
+            sizes="100vw"
           />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/95 via-forest/80 to-forest/40 z-10" />
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-0">
           <div className="max-w-3xl">
@@ -82,7 +86,7 @@ export default function Home() {
                 Schedule a Free Consultation
               </a>
               <a
-                href="tel:0000000000"
+                href="tel:+15122194053"
                 className="inline-flex items-center justify-center border-2 border-cream/40 text-cream hover:bg-cream hover:text-forest px-8 py-4 rounded text-lg font-semibold transition-all font-[family-name:var(--font-body)]"
               >
                 Call Our Office
@@ -262,6 +266,18 @@ export default function Home() {
               </h2>
             </div>
 
+            <div className="flex justify-center mb-10">
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+                <Image
+                  src="/images/william-russell-headshot.png"
+                  alt="William H. Russell"
+                  fill
+                  className="object-cover"
+                  sizes="224px"
+                />
+              </div>
+            </div>
+
             <div className="space-y-5 text-forest/70 leading-relaxed font-[family-name:var(--font-body)] text-base sm:text-lg">
               <p>
                 William H. Russell is a{" "}
@@ -375,6 +391,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Client Testimonials */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase font-[family-name:var(--font-body)]">
+              What Clients Say
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-forest mt-3">
+              Client Testimonials
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { quote: "William is on your side and handles the court process with all its hurdles.", initials: "Y.Y." },
+              { quote: "William is the man to have in your corner in a time of need. I highly recommend his service.", initials: "A.C." },
+              { quote: "He listens well, is proactive, diligent, industrious, and doesn't waste your time.", initials: "B.K." },
+              { quote: "Mr. Russell was great to work with. He provided clear answers to all my questions.", initials: "C.P." },
+              { quote: "Great guy — responsive and takes care of business.", initials: "J.S." },
+              { quote: "I recommend The Law Office of William H. Russell. The attorneys are always working on your side.", initials: "J.A." },
+            ].map((t, i) => (
+              <div key={i} className="bg-cream-light rounded-lg p-6 sm:p-8 border border-cream-dark/20">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, s) => (
+                    <svg key={s} className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-forest/70 italic leading-relaxed font-[family-name:var(--font-body)] text-sm sm:text-base mb-4">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <p className="text-forest font-semibold text-sm font-[family-name:var(--font-body)]">
+                  &mdash; {t.initials}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Band */}
       <section className="py-16 sm:py-20 bg-accent relative overflow-hidden">
         {/* Subtle pattern */}
@@ -405,7 +461,7 @@ export default function Home() {
               Schedule Your Consultation
             </a>
             <a
-              href="tel:0000000000"
+              href="tel:+15122194053"
               className="inline-flex items-center justify-center border-2 border-cream text-cream hover:bg-cream hover:text-accent-dark px-8 py-4 rounded text-lg font-semibold transition-colors font-[family-name:var(--font-body)]"
             >
               Call Our Office
