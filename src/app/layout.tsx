@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://whr-law.com",
     siteName: "WHR Law",
   },
-  robots: "noindex, nofollow",
+  robots: "index, follow",
 };
 
 export default function RootLayout({
