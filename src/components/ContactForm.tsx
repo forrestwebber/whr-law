@@ -7,6 +7,7 @@ export default function ContactForm() {
     name: "",
     phone: "",
     email: "",
+    practiceArea: "",
     description: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -26,7 +27,7 @@ export default function ContactForm() {
 
       if (res.ok) {
         setStatus("sent");
-        setFormData({ name: "", phone: "", email: "", description: "" });
+        setFormData({ name: "", phone: "", email: "", practiceArea: "", description: "" });
       } else {
         setStatus("error");
       }
@@ -37,10 +38,10 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="bg-white rounded-lg p-8 sm:p-10 shadow-lg border border-gray-100 text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <div className="bg-white rounded-lg p-8 sm:p-10 shadow-lg border border-cream-dark/20 text-center">
+        <div className="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg
-            className="w-8 h-8 text-green-600"
+            className="w-8 h-8 text-forest"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -53,11 +54,12 @@ export default function ContactForm() {
             />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-navy mb-2">
+        <h3 className="text-2xl font-bold text-forest mb-2">
           Thank You
         </h3>
-        <p className="text-navy/60 font-[family-name:var(--font-body)]">
-          Jack will review your case and contact you within 24 hours.
+        <p className="text-forest/60 font-[family-name:var(--font-body)]">
+          William will review your information and contact you shortly to
+          discuss your case.
         </p>
       </div>
     );
@@ -66,20 +68,23 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-lg p-6 sm:p-8 lg:p-10 shadow-lg border border-gray-100"
+      className="bg-white rounded-lg p-6 sm:p-8 lg:p-10 shadow-lg border border-cream-dark/20"
     >
-      <h3 className="text-2xl font-bold text-navy mb-6">
-        Tell Us About Your Case
+      <h3 className="text-2xl font-bold text-forest mb-2">
+        Request Your Free Consultation
       </h3>
+      <p className="text-forest/50 text-sm mb-6 font-[family-name:var(--font-body)]">
+        No cost. No obligation. Just honest legal guidance.
+      </p>
 
       <div className="space-y-4 sm:space-y-5">
         {/* Name */}
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-navy/80 mb-1.5 font-[family-name:var(--font-body)]"
+            className="block text-sm font-medium text-forest/80 mb-1.5 font-[family-name:var(--font-body)]"
           >
-            Full Name <span className="text-red-cta">*</span>
+            Full Name <span className="text-accent">*</span>
           </label>
           <input
             type="text"
@@ -89,18 +94,18 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, name: e.target.value })
             }
-            className="w-full px-4 py-3 rounded border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-colors text-navy font-[family-name:var(--font-body)]"
-            placeholder="John Smith"
+            className="w-full px-4 py-3 rounded border border-cream-dark/30 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-colors text-forest font-[family-name:var(--font-body)]"
+            placeholder="Your full name"
           />
         </div>
 
-        {/* Phone - prominent */}
+        {/* Phone */}
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-navy/80 mb-1.5 font-[family-name:var(--font-body)]"
+            className="block text-sm font-medium text-forest/80 mb-1.5 font-[family-name:var(--font-body)]"
           >
-            Phone Number <span className="text-red-cta">*</span>
+            Phone Number <span className="text-accent">*</span>
           </label>
           <input
             type="tel"
@@ -110,10 +115,10 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, phone: e.target.value })
             }
-            className="w-full px-4 py-3 rounded border-2 border-gold/30 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-colors text-navy text-lg font-semibold font-[family-name:var(--font-body)]"
-            placeholder="(214) 555-0123"
+            className="w-full px-4 py-3 rounded border-2 border-accent/20 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-colors text-forest text-lg font-semibold font-[family-name:var(--font-body)]"
+            placeholder="(512) 555-0123"
           />
-          <p className="text-xs text-navy/40 mt-1 font-[family-name:var(--font-body)]">
+          <p className="text-xs text-forest/40 mt-1 font-[family-name:var(--font-body)]">
             We will call you back at this number
           </p>
         </div>
@@ -122,7 +127,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-navy/80 mb-1.5 font-[family-name:var(--font-body)]"
+            className="block text-sm font-medium text-forest/80 mb-1.5 font-[family-name:var(--font-body)]"
           >
             Email Address
           </label>
@@ -133,19 +138,44 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-            className="w-full px-4 py-3 rounded border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-colors text-navy font-[family-name:var(--font-body)]"
-            placeholder="john@example.com"
+            className="w-full px-4 py-3 rounded border border-cream-dark/30 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-colors text-forest font-[family-name:var(--font-body)]"
+            placeholder="you@example.com"
           />
+        </div>
+
+        {/* Practice Area */}
+        <div>
+          <label
+            htmlFor="practiceArea"
+            className="block text-sm font-medium text-forest/80 mb-1.5 font-[family-name:var(--font-body)]"
+          >
+            What do you need help with?
+          </label>
+          <select
+            id="practiceArea"
+            value={formData.practiceArea}
+            onChange={(e) =>
+              setFormData({ ...formData, practiceArea: e.target.value })
+            }
+            className="w-full px-4 py-3 rounded border border-cream-dark/30 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-colors text-forest font-[family-name:var(--font-body)]"
+          >
+            <option value="">Select a practice area...</option>
+            <option value="probate">Probate</option>
+            <option value="family-law">Family Law</option>
+            <option value="estate-planning">Estate Planning</option>
+            <option value="criminal-defense">Criminal Defense</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
         </div>
 
         {/* Case Description */}
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium text-navy/80 mb-1.5 font-[family-name:var(--font-body)]"
+            className="block text-sm font-medium text-forest/80 mb-1.5 font-[family-name:var(--font-body)]"
           >
-            Brief Description of Your Case{" "}
-            <span className="text-red-cta">*</span>
+            Tell Us About Your Situation{" "}
+            <span className="text-accent">*</span>
           </label>
           <textarea
             id="description"
@@ -155,8 +185,8 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
             }
-            className="w-full px-4 py-3 rounded border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-colors text-navy resize-none font-[family-name:var(--font-body)]"
-            placeholder="Tell us what happened and how we can help..."
+            className="w-full px-4 py-3 rounded border border-cream-dark/30 focus:border-forest focus:ring-2 focus:ring-forest/20 outline-none transition-colors text-forest resize-none font-[family-name:var(--font-body)]"
+            placeholder="Briefly describe your legal situation and how we can help..."
           />
         </div>
 
@@ -164,9 +194,9 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full bg-red-cta hover:bg-red-cta-dark disabled:bg-red-cta/50 text-white py-4 rounded text-lg font-semibold transition-colors font-[family-name:var(--font-body)]"
+          className="w-full bg-forest hover:bg-forest-dark disabled:bg-forest/50 text-cream py-4 rounded text-lg font-semibold transition-colors font-[family-name:var(--font-body)]"
         >
-          {status === "sending" ? "Sending..." : "Request Free Case Review"}
+          {status === "sending" ? "Sending..." : "Request Free Consultation"}
         </button>
 
         {status === "error" && (
@@ -175,9 +205,9 @@ export default function ContactForm() {
           </p>
         )}
 
-        <p className="text-xs text-navy/40 text-center font-[family-name:var(--font-body)]">
-          By submitting this form, you agree to be contacted about your case.
-          Your information is kept confidential.
+        <p className="text-xs text-forest/40 text-center font-[family-name:var(--font-body)]">
+          By submitting this form, you agree to be contacted about your legal
+          matter. Your information is kept strictly confidential.
         </p>
       </div>
     </form>

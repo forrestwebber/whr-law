@@ -15,19 +15,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Jack Decker | Dallas Personal Injury Attorney",
+  title: "William H. Russell | Austin & Georgetown Attorney | WHR Law",
   description:
-    "Injured in Dallas? Attorney Jack Decker fights for maximum compensation. Car accidents, truck wrecks, slip & falls. No fee unless we win. Free consultation.",
+    "Experienced Texas attorney William H. Russell provides trusted legal counsel in Probate, Family Law, Estate Planning, and Criminal Defense. Serving Williamson and Travis counties for 37+ years. Free consultation.",
   keywords:
-    "Dallas personal injury attorney, car accident lawyer Dallas, truck wreck attorney Texas, slip and fall lawyer, Jack Decker attorney",
+    "Austin attorney, Georgetown lawyer, probate attorney Texas, family law lawyer Austin, estate planning Georgetown, criminal defense Williamson County, WHR Law, William Russell attorney",
   openGraph: {
-    title: "Jack Decker | Dallas Personal Injury Attorney",
+    title: "William H. Russell | Austin & Georgetown Attorney | WHR Law",
     description:
-      "Injured? Jack Decker fights for you. No fee unless we win. Free case review.",
+      "Fourth-generation Texan. 37+ years of trusted legal counsel in Probate, Family Law, Estate Planning & Criminal Defense. Free consultation.",
     type: "website",
     locale: "en_US",
-    url: "https://rjdeckerlaw.com",
-    siteName: "RJ Decker Law",
+    url: "https://whr-law.com",
+    siteName: "WHR Law",
   },
   robots: "noindex, nofollow",
 };

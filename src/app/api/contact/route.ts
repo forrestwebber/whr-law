@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, phone, email, description } = body;
+    const { name, phone, email, practiceArea, description } = body;
 
     if (!name || !phone || !description) {
       return NextResponse.json(
@@ -13,13 +13,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Log to console for now — will connect to CRM later
-    console.log("=== NEW CASE INQUIRY ===");
+    console.log("=== NEW CONSULTATION REQUEST ===");
     console.log("Name:", name);
     console.log("Phone:", phone);
     console.log("Email:", email || "Not provided");
+    console.log("Practice Area:", practiceArea || "Not specified");
     console.log("Description:", description);
     console.log("Submitted at:", new Date().toISOString());
-    console.log("========================");
+    console.log("================================");
 
     return NextResponse.json({ success: true });
   } catch {
