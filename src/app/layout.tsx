@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "Experienced Texas attorney William H. Russell provides trusted legal counsel in Probate, Family Law, Estate Planning, and Criminal Defense. Serving Williamson and Travis counties for 37+ years. Free consultation.",
   keywords:
     "Austin attorney, Georgetown lawyer, probate attorney Texas, family law lawyer Austin, estate planning Georgetown, criminal defense Williamson County, WHR Law, William Russell attorney",
+  metadataBase: new URL("https://whr-law.com"),
   openGraph: {
     title: "William H. Russell | Austin & Georgetown Attorney | WHR Law",
     description:
@@ -28,6 +29,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://whr-law.com",
     siteName: "WHR Law",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "William H. Russell | Austin & Georgetown Attorney" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "William H. Russell | Austin & Georgetown Attorney | WHR Law",
+    description: "Fourth-generation Texan. 37+ years of trusted legal counsel in Probate, Family Law, Estate Planning & Criminal Defense.",
+    images: ["/twitter-image"],
   },
   robots: "index, follow",
 };
