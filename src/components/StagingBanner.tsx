@@ -1,9 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function StagingBanner({ clientName }: { clientName: string }) {
   const [dismissed, setDismissed] = useState(false)
+
+  useEffect(() => {
+    if (dismissed) {
+      document.body.style.paddingBottom = ""
+    } else {
+      document.body.style.paddingBottom = "90px"
+    }
+    return () => { document.body.style.paddingBottom = "" }
+  }, [dismissed])
+
   if (dismissed) return null
 
   return (
