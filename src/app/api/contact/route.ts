@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8658667496:AAHbf8jGYCKPBaPEY9pyXXzNPNtEnadiDOU";
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "8569056081";
+
+async function sendTelegram(text: string) {
+  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: "Markdown" }),
+  }).catch(() => {});
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,28 +26,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email notification to William
-    await transporter.sendMail({
-      from: `"WHR Law Website" <${process.env.SMTP_USER}>`,
-      to: "william@whr-law.com",
-      cc: "forrestwebber@gmail.com",
-      subject: `New Consultation Request from ${name}`,
-      html: `
-        <h2>New Free Consultation Request</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email || "Not provided"}</p>
-        <p><strong>Practice Area:</strong> ${practiceArea || "Not specified"}</p>
-        <p><strong>Description:</strong></p>
-        <p>${description}</p>
-        <hr />
-        <p style="color: #666; font-size: 12px;">
-          Submitted via whr-law.com on ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })}
-        </p>
-      `,
+    const subject = `New Consultation Request from ${name}`;
+    const html = `
+      <h2>New Free Consultation Request — WHR Law</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Email:</strong> ${email || "Not provided"}</p>
+      <p><strong>Practice Area:</strong> ${practiceArea || "Not specified"}</p>
+      <p><strong>Description:</strong></p>
+      <p>${description}</p>
+      <hr />
+      <p style="color: #666; font-size: 12px;">
+        Submitted via whr-law.com on ${new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })}
+      </p>
+    `;
+
+    await resend.emails.send({
+      from: "WHR Law Website <noreply@slacked.co>",
+      to: ["william@whr-law.com", "forrestwebber@gmail.com"],
+      subject,
+      html,
     });
 
-    console.log(`Lead captured: ${name} - ${phone} - ${new Date().toISOString()}`);
+    await sendTelegram(
+      `📋 *New WHR Law Inquiry*\nName: ${name}\nPhone: ${phone}\nEmail: ${email || "none"}\nArea: ${practiceArea || "not specified"}\n${description}`
+    );
 
     return NextResponse.json({ success: true });
   } catch (err) {
