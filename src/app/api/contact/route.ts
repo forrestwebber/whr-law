@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
 
     await resend.emails.send({
       from: "WHR Law Website <noreply@slacked.co>",
-      to: ["william@whr-law.com", "forrestwebber@gmail.com"],
+      to: ["william@whr-law.com", "contactus@whr-law.com"],
       subject,
       html,
     });
