@@ -1,0 +1,15 @@
+import type { MetadataRoute } from 'next'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const base = 'https://whr-law.com'
+  const now = new Date().toISOString()
+
+  return [
+    { url: base, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${base}/practice-areas/family-law`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/practice-areas/criminal-defense`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/practice-areas/estate-planning`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/practice-areas/probate`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/links`, lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
+  ]
+}
