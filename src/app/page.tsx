@@ -6,6 +6,7 @@ import Link from "next/link";
 import { WHRNav } from "./WHRNav";
 import { WHRFooter } from "./WHRFooter";
 
+
 export default function WHRLaw() {
   return (
     <main style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}>

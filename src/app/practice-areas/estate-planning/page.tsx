@@ -3,6 +3,21 @@ import { WHRNav } from "../../WHRNav";
 import { WHRFooter } from "../../WHRFooter";
 import { WHRChatBot } from "../../WHRChatBot";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Estate Planning & Wills Attorney | Georgetown TX",
+  description: "Attorney-drafted wills, trusts, powers of attorney and advance directives for Central Texas families. 500+ wills completed. Serving Georgetown, Austin and Williamson County.",
+  alternates: { canonical: "/practice-areas/estate-planning" },
+  openGraph: {
+    title: "Estate Planning & Wills Attorney | Georgetown TX",
+    description: "Attorney-drafted wills, trusts, powers of attorney and advance directives for Central Texas families. 500+ wills completed. Serving Georgetown, Austin and Williamson County.",
+    url: "/practice-areas/estate-planning",
+    type: "website",
+  },
+};
+
+
 export default function EstatePlanning() {
   return (
     <main style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}>

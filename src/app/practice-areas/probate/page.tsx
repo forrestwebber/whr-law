@@ -3,6 +3,21 @@ import { WHRNav } from "../../WHRNav";
 import { WHRFooter } from "../../WHRFooter";
 import { WHRChatBot } from "../../WHRChatBot";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Probate Lawyer | Georgetown & Williamson County TX",
+  description: "Texas probate attorney handling independent and dependent administration, muniment of title, small estate affidavits and heirship hearings in Williamson and Travis counties.",
+  alternates: { canonical: "/practice-areas/probate" },
+  openGraph: {
+    title: "Probate Lawyer | Georgetown & Williamson County TX",
+    description: "Texas probate attorney handling independent and dependent administration, muniment of title, small estate affidavits and heirship hearings in Williamson and Travis counties.",
+    url: "/practice-areas/probate",
+    type: "website",
+  },
+};
+
+
 export default function Probate() {
   return (
     <main style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}>

@@ -3,6 +3,21 @@ import { WHRNav } from "../../WHRNav";
 import { WHRFooter } from "../../WHRFooter";
 import { WHRChatBot } from "../../WHRChatBot";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Family Law & Divorce Attorney | Georgetown TX",
+  description: "Divorce, child custody, support, QDROs and grandparents' rights in Williamson and Travis counties. Texas community property handled by an attorney with 37+ years of experience.",
+  alternates: { canonical: "/practice-areas/family-law" },
+  openGraph: {
+    title: "Family Law & Divorce Attorney | Georgetown TX",
+    description: "Divorce, child custody, support, QDROs and grandparents' rights in Williamson and Travis counties. Texas community property handled by an attorney with 37+ years of experience.",
+    url: "/practice-areas/family-law",
+    type: "website",
+  },
+};
+
+
 export default function FamilyLaw() {
   return (
     <main style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}>

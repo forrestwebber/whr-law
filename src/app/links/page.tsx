@@ -3,6 +3,21 @@ import { WHRNav } from "../WHRNav";
 import { WHRFooter } from "../WHRFooter";
 import { WHRChatBot } from "../WHRChatBot";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Texas Legal Resources & Court Links",
+  description: "Court links and legal resources for Williamson and Travis counties, compiled by the Law Office of William H. Russell in Georgetown, Texas.",
+  alternates: { canonical: "/links" },
+  openGraph: {
+    title: "Texas Legal Resources & Court Links",
+    description: "Court links and legal resources for Williamson and Travis counties, compiled by the Law Office of William H. Russell in Georgetown, Texas.",
+    url: "/links",
+    type: "website",
+  },
+};
+
+
 const LINK_GROUPS = [
   {
     heading: "Travis County",

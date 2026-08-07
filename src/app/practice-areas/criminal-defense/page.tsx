@@ -3,6 +3,21 @@ import { WHRNav } from "../../WHRNav";
 import { WHRFooter } from "../../WHRFooter";
 import { WHRChatBot } from "../../WHRChatBot";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Criminal Defense Attorney | Georgetown & Williamson County TX",
+  description: "Criminal defense in Williamson and Travis county courts from an attorney who interned with the Texas Court of Criminal Appeals. Free consultation, 37+ years of experience.",
+  alternates: { canonical: "/practice-areas/criminal-defense" },
+  openGraph: {
+    title: "Criminal Defense Attorney | Georgetown & Williamson County TX",
+    description: "Criminal defense in Williamson and Travis county courts from an attorney who interned with the Texas Court of Criminal Appeals. Free consultation, 37+ years of experience.",
+    url: "/practice-areas/criminal-defense",
+    type: "website",
+  },
+};
+
+
 export default function CriminalDefense() {
   return (
     <main style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}>
